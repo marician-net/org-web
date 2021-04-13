@@ -9,7 +9,16 @@ const POLLING_INTERVAL = 12000
 const rpcUrl = getNodeUrl()
 const chainId = parseInt(process.env.REACT_APP_CHAIN_ID, 10)
 
-const injected = new InjectedConnector({ supportedChainIds: [chainId] })
+const injected = new InjectedConnector({
+  supportedChainIds: [
+    1, // Mainet
+    3, // Ropsten
+    4, // Rinkeby
+    5, // Goerli
+    42, // Kovan
+    chainId,
+  ],
+})
 
 const walletconnect = new WalletConnectConnector({
   rpc: { [chainId]: rpcUrl },
