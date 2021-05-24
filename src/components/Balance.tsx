@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import CountUp from 'react-countup'
-import { Text } from '@pancakeswap-libs/uikit'
+import { Text } from 'toolkitUI'
 
 interface TextProps {
   isDisabled?: boolean
@@ -15,7 +15,7 @@ interface BalanceProps extends TextProps {
 }
 
 const Balance: React.FC<BalanceProps> = ({ value, fontSize, color, decimals, isDisabled, unit }) => {
-  const previousValue = useRef(0)
+  const previousValue = useRef<number|undefined>();
 
   useEffect(() => {
     previousValue.current = value

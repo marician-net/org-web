@@ -1,4 +1,21 @@
 const tokens = {
+  /**
+   *  Zap Tokens
+   */
+  zap: {
+    symbol: 'ZAP',
+    address: {
+      1: '0x6781a0f84c7e9e846dcb84a9a5bd49333067b104',
+      42: '0x0331048143015c0784D0F9c723E709314aB87460',
+      31337: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
+    },
+    decimals: 18,
+    projectLink: 'https://zap.org/',
+  },
+
+  /**
+   * Pacnake Swap Tokens
+   */
   bnb: {
     symbol: 'BNB',
     projectLink: 'https://www.binance.com/',

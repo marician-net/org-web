@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useRouteMatch, Link } from 'react-router-dom'
-import { ButtonMenu, ButtonMenuItem } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
+import { ButtonMenu, ButtonMenuItem } from 'toolkitUI'
 
 const FarmTabButtons = () => {
   const { url, isExact } = useRouteMatch()

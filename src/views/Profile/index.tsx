@@ -8,7 +8,7 @@ import ProfileCreation from './ProfileCreation'
 import Header from './components/Header'
 import TaskCenter from './TaskCenter'
 import PublicProfile from './PublicProfile'
-import LeadInBanner from '../TradingCompetition/components/LeadInBanner'
+// import LeadInBanner from '../TradingCompetition/components/LeadInBanner'
 
 const Profile = () => {
   const { isInitialized, isLoading, hasProfile } = useProfile()
@@ -30,7 +30,7 @@ const Profile = () => {
 
   return (
     <>
-      <LeadInBanner />
+      {/* <LeadInBanner /> */}
       <Page>
         <Header />
         <Route exact path="/profile">

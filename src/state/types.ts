@@ -1,6 +1,6 @@
-import { Toast } from '@pancakeswap-libs/uikit'
+import { Toast } from 'toolkitUI'
 import BigNumber from 'bignumber.js'
-import { CampaignType, FarmConfig, Nft, PoolConfig, Team } from 'config/constants/types'
+import { CampaignType, FarmConfig, NFT, Nft, PoolConfig, Team, Token } from 'config/constants/types'
 
 export type TranslatableText =
   | string
@@ -11,6 +11,33 @@ export type TranslatableText =
         [key: string]: string | number
       }
     }
+
+/*     const token = {
+      name: "Tadhana Token",
+      symbol: "TT",
+  /*  should be pulled on per address basis 
+      price: "2.564",
+      owned: "77",
+      value: "197.428",
+      isNewToken: true,
+  }
+ */  
+
+export interface RaiseNFT extends NFT {
+  price: number
+  isNewToken: boolean
+  isOwned: boolean
+  category: string
+  artist: string
+}
+
+export interface RaiseToken extends Token {
+  price: number
+  value: number
+  isNewToken: boolean
+  bondedSupply: number
+  marketCap: number
+}
 
 export interface Farm extends FarmConfig {
   tokenAmount?: BigNumber
@@ -25,6 +52,32 @@ export interface Farm extends FarmConfig {
     earnings: BigNumber
   }
 }
+export interface Transaction {
+  txHash: string
+  block: number
+  timestamp: string
+  status: number
+  from: string
+  to: string
+  transactionFee: number
+  gasInfo: string
+  action: string
+  txAction: string
+  tokenTransfer: string
+  tokenAmount?: BigNumber
+  quoteTokenAmount?: BigNumber
+  lpTotalInQuoteToken?: BigNumber
+  tokenPriceVsQuote?: BigNumber
+  poolWeight?: BigNumber
+  actionPanelToggled?: boolean
+  userData?: {
+    allowance: BigNumber
+    tokenBalance: BigNumber
+    stakedBalance: BigNumber
+    earnings: BigNumber
+  }
+}
+
 
 export interface Pool extends PoolConfig {
   totalStaked?: BigNumber
@@ -70,6 +123,10 @@ export interface ProfileState {
   isLoading: boolean
   hasRegistered: boolean
   data: Profile
+}
+
+export interface TransactionState {
+  data: Transaction[]
 }
 
 export type TeamResponse = {
@@ -156,4 +213,5 @@ export interface State {
   teams: TeamsState
   achievements: AchievementState
   block: BlockState
+  transactions: TransactionState
 }

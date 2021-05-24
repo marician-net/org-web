@@ -1,3 +1,4 @@
+import { ChainId } from '@pancakeswap-libs/sdk';
 import Web3 from 'web3'
 import { AbiItem } from 'web3-utils'
 import web3NoAccount from 'utils/web3'
@@ -19,6 +20,11 @@ import {
   getClaimRefundAddress,
   getTradingCompetitionAddress,
   getEasterNftAddress,
+  getZapAddress,
+  getRegistryAddress,
+  getBondageAddress,
+  getCurrentCostAddress,
+  getTokenFactoryAddress,
 } from 'utils/addressHelpers'
 
 // ABI
@@ -39,11 +45,47 @@ import sousChefBnb from 'config/abi/sousChefBnb.json'
 import claimRefundAbi from 'config/abi/claimRefund.json'
 import tradingCompetitionAbi from 'config/abi/tradingCompetition.json'
 import easterNftAbi from 'config/abi/easterNft.json'
+import zapToken from 'config/abi/zapToken.json'
+import registry from 'config/abi/registry.json'
+import bondage from 'config/abi/bondage.json'
+import currentCost from 'config/abi/currentCost.json'
+import tokenFactory from 'config/abi/tokenFactory.json'
+import tokenDotFactory from 'config/abi/tokenDotFactory.json'
 
 const getContract = (abi: any, address: string, web3?: Web3) => {
   const _web3 = web3 ?? web3NoAccount
   return new _web3.eth.Contract((abi as unknown) as AbiItem, address)
 }
+
+/**
+ *  Zap Contracts
+ */
+
+export const getZapToken = (web3?: Web3, chainID?:number) => {
+  return getContract(zapToken, getZapAddress(chainID), web3)
+}
+export const getErc20 = (address: string, web3?: Web3) => {
+  return getContract(bep20Abi, address, web3)
+}
+export const getRegistryContract = (web3?: Web3, chainID?:number) => {
+  return getContract(registry, getRegistryAddress(chainID), web3)
+}
+export const getBondageContract = (web3?: Web3, chainID?:number) => {
+  return getContract(bondage, getBondageAddress(chainID), web3)
+}
+export const getCurrentCostContract = (web3?: Web3, chainID?:number) => {
+  return getContract(currentCost, getCurrentCostAddress(chainID), web3)
+}
+export const getTokenFactoryContract = (web3?: Web3) => {
+  return getContract(tokenFactory, getTokenFactoryAddress(), web3)
+}
+export const getTokenDotFactoryContract = (address: string, web3?: Web3) => {
+  return getContract(tokenDotFactory, address, web3)
+}
+
+/**
+ *  Pacnake Swap Contracts
+ */
 
 export const getBep20Contract = (address: string, web3?: Web3) => {
   return getContract(bep20Abi, address, web3)

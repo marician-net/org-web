@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import useI18n from 'hooks/useI18n'
-import { LinkExternal, Text } from '@pancakeswap-libs/uikit'
+import { LinkExternal, Text } from 'toolkitUI'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { communityFarms } from 'config/constants'
@@ -122,7 +122,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, apr, 
         {isActive && (
           <StakeContainer>
             <StyledLinkExternal href={`https://exchange.pancakeswap.finance/#/add/${liquidityUrlPathParts}`}>
-              {TranslateString(999, `Get ${lpLabel}`, { name: lpLabel })}
+              {TranslateString(999, `Get ${lpLabel}`)}
             </StyledLinkExternal>
           </StakeContainer>
         )}

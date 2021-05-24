@@ -1,40 +1,37 @@
 import React, { useContext } from 'react'
-import { Menu as UikitMenu } from '@pancakeswap-libs/uikit'
+import { Menu as UikitMenu} from 'toolkitUI'
 import { useWeb3React } from '@web3-react/core'
-import { allLanguages } from 'config/localisation/languageCodes'
-import { LanguageContext } from 'contexts/Localisation/languageContext'
+import { allLanguages } from 'constants/localisation/languageCodes'
+import { LanguageContext } from 'hooks/LanguageContext'
 import useTheme from 'hooks/useTheme'
+import useGetPriceData from 'hooks/useGetPriceData'
+import useGetLocalProfile from 'hooks/useGetLocalProfile'
 import useAuth from 'hooks/useAuth'
-import { usePriceCakeBusd, useProfile } from 'state/hooks'
-import config from './config'
+import { CAKE } from 'constants/index'
+import links from './config'
 
-const Menu = (props) => {
+const Menu: React.FC = (props) => {
   const { account } = useWeb3React()
   const { login, logout } = useAuth()
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
   const { isDark, toggleTheme } = useTheme()
-  const cakePriceUsd = usePriceCakeBusd()
-  const { profile } = useProfile()
+  const priceData = useGetPriceData()
+  const cakePriceUsd = priceData ? Number(priceData.data[CAKE.address].price) : undefined
+  // const profile = useGetLocalProfile()
 
   return (
     <UikitMenu
-      account={account}
+      links={links}
+      account={account as string}
       login={login}
       logout={logout}
       isDark={isDark}
       toggleTheme={toggleTheme}
-      currentLang={selectedLanguage && selectedLanguage.code}
+      currentLang={selectedLanguage?.code || ''}
       langs={allLanguages}
       setLang={setSelectedLanguage}
-      cakePriceUsd={cakePriceUsd.toNumber()}
-      links={config}
-      profile={{
-        username: profile?.username,
-        image: profile?.nft ? `/images/nfts/${profile.nft?.images.sm}` : undefined,
-        profileLink: '/profile',
-        noProfileLink: '/profile',
-        showPip: !profile?.username,
-      }}
+      cakePriceUsd={cakePriceUsd}
+      // profile={profile}
       {...props}
     />
   )

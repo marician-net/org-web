@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { sumBy } from 'lodash'
 import { useAppDispatch } from 'state'
 import { useWeb3React } from '@web3-react/core'
-import { Card, CardBody, CardHeader, Flex, Heading, PrizeIcon } from '@pancakeswap-libs/uikit'
+import { Card, CardBody, CardHeader, Flex, Heading, PrizeIcon } from 'toolkitUI'
 import { useProfile } from 'state/hooks'
 import { Achievement } from 'state/types'
 import { addPoints } from 'state/profile'
@@ -30,8 +30,8 @@ const ClaimPointsCallout = () => {
   }, [account, dispatch, setClaimableAchievement])
 
   const handleCollectSuccess = (achievement: Achievement) => {
-    dispatch(addAchievement(achievement))
-    dispatch(addPoints(achievement.points))
+    dispatch<any>(addAchievement(achievement))
+    dispatch<any>(addPoints(achievement.points))
 
     setClaimableAchievement((prevClaimableAchievements) =>
       prevClaimableAchievements.filter((prevClaimableAchievement) => prevClaimableAchievement.id !== achievement.id),
@@ -55,7 +55,7 @@ const ClaimPointsCallout = () => {
           <Flex alignItems="center" mb={['16px', null, 0]}>
             <PrizeIcon width="32px" mr="8px" />
             <Heading size="lg">
-              {TranslateString(999, `${totalPointsToCollect} Points to Collect`, { num: totalPointsToCollect })}
+              {TranslateString(999, `${totalPointsToCollect} Points to Collect`)}
             </Heading>
           </Flex>
         </Flex>

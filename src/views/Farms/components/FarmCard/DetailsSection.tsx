@@ -1,7 +1,8 @@
+/* eslint-disable spaced-comment */
 import React from 'react'
 import useI18n from 'hooks/useI18n'
 import styled from 'styled-components'
-import { Text, Flex, LinkExternal } from '@pancakeswap-libs/uikit'
+import { Text, Flex, LinkExternal } from 'toolkitUI'
 
 export interface ExpandableSectionProps {
   bscScanAddress?: string
@@ -38,7 +39,7 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
       </Flex>
       {!removed && (
         <StyledLinkExternal href={addLiquidityUrl}>
-          {TranslateString(999, `Get ${lpLabel}`, { name: lpLabel })}
+          {TranslateString(999, `Get ${lpLabel}` /*, { name: lpLabel } */)}
         </StyledLinkExternal>
       )}
       <StyledLinkExternal href={bscScanAddress}>{TranslateString(999, 'View Contract')}</StyledLinkExternal>

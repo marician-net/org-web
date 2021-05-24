@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TextProps } from '@pancakeswap-libs/uikit'
+import { Text, TextProps } from 'toolkitUI'
 import useI18n from 'hooks/useI18n'
 import { TranslatableText as AchievementTitleType } from 'state/types'
 
@@ -22,7 +22,7 @@ const AchievementTitle: React.FC<AchievementTitleProps> = ({ title, ...props }) 
 
   return (
     <Text bold {...props}>
-      {TranslateString(id, fallback, data)}
+      {TranslateString(id, fallback)}
     </Text>
   )
 }

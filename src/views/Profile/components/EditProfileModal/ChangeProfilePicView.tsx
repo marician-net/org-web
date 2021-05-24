@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, InjectedModalProps, Skeleton, Text } from '@pancakeswap-libs/uikit'
+import { Button, InjectedModalProps, Skeleton, Text } from 'toolkitUI'
 import { useWeb3React } from '@web3-react/core'
 import { useAppDispatch } from 'state'
 import nftList from 'config/constants/nfts'
@@ -45,7 +45,7 @@ const ChangeProfilePicPage: React.FC<ChangeProfilePicPageProps> = ({ onDismiss }
     },
     onSuccess: async () => {
       // Re-fetch profile
-      await dispatch(fetchProfile(account))
+      await dispatch<any>(fetchProfile(account))
       toastSuccess('Profile Updated!')
 
       onDismiss()

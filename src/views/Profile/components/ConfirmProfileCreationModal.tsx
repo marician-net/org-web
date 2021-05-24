@@ -1,12 +1,12 @@
 import React from 'react'
-import { Modal, Flex, Text } from '@pancakeswap-libs/uikit'
+import { useToast } from 'state/hooks'
+import { Modal, Flex, Text } from 'toolkitUI'
 import { useAppDispatch } from 'state'
 import BigNumber from 'bignumber.js'
 import useI18n from 'hooks/useI18n'
 import { useCake, usePancakeRabbits, useProfile } from 'hooks/useContract'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
 import { fetchProfile } from 'state/profile'
-import { useToast } from 'state/hooks'
 import { REGISTER_COST } from '../ProfileCreation/config'
 import ApproveConfirmButtons from './ApproveConfirmButtons'
 
@@ -61,7 +61,7 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
         .send({ from: account })
     },
     onSuccess: async () => {
-      await dispatch(fetchProfile(account))
+      await dispatch<any>(fetchProfile(account))
       onDismiss()
       toastSuccess('Profile created!')
     },
@@ -74,7 +74,7 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
       </Text>
       <Flex justifyContent="space-between" mb="16px">
         <Text>{TranslateString(999, 'Cost')}</Text>
-        <Text>{TranslateString(999, `${REGISTER_COST} CAKE`, { num: REGISTER_COST })}</Text>
+        <Text>{TranslateString(999, `${REGISTER_COST} CAKE`)}</Text>
       </Flex>
       <ApproveConfirmButtons
         isApproveDisabled={isConfirmed || isConfirming || isApproved}

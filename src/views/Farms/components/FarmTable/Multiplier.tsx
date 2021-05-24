@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { HelpIcon } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
+import { HelpIcon } from 'toolkitUI'
 
 import Tooltip from '../Tooltip/Tooltip'
 

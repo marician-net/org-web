@@ -30,14 +30,25 @@ export enum PoolCategory {
 }
 
 export interface Address {
+  1?: string      // ETH Mainnet
+  42?: string     // ETH Kovan
+  31337?: string  // Zap Devnet
   97?: string
-  56: string
+  56?: string
 }
 
 export interface Token {
+  name?: string
   symbol: string
   address?: Address
   decimals?: number
+  projectLink?: string
+}
+
+export interface NFT {
+  name?: string
+  symbol: string
+  tokenURI?: string
   projectLink?: string
 }
 

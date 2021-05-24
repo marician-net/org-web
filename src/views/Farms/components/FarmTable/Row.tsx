@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
-import { useMatchBreakpoints } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
+import { useMatchBreakpoints } from 'toolkitUI'
 
 import Apr, { AprProps } from './Apr'
 import Farm, { FarmProps } from './Farm'

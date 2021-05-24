@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AutoRenewIcon, Button, Checkbox, Flex, InjectedModalProps, Text } from '@pancakeswap-libs/uikit'
+import { AutoRenewIcon, Button, Checkbox, Flex, InjectedModalProps, Text } from 'toolkitUI'
 import useI18n from 'hooks/useI18n'
 import useGetProfileCosts from 'hooks/useGetProfileCosts'
 import { useAppDispatch } from 'state'
@@ -33,7 +33,7 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
       })
       .on('receipt', async () => {
         // Re-fetch profile
-        await dispatch(fetchProfile(account))
+        await dispatch<any>(fetchProfile(account))
         toastSuccess('Profile Paused!')
 
         onDismiss()

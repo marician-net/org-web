@@ -1,0 +1,7 @@
+{
+    "customizeUI.stylesheet": {
+        ".tabs-and-actions-container .editor-actions" : "display: none !important; position: absolute; top: 20px; right: 0; z-index: 1; background-color: #2D2D2D;", 
+        ".tabs-and-actions-container:hover .editor-actions": "display: flex !important;", 
+        ".title.tabs.show-file-icons" : "overflow: unset !important;" 
+    }
+}

@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import { toastTypes } from '@pancakeswap-libs/uikit'
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit'
 import { kebabCase } from 'lodash'
 import { push } from 'state/toasts'
+import { toastTypes } from 'toolkitUI'
 import { AchievementState, Achievement } from '../types'
 import { getAchievements } from './helpers'
 
@@ -40,7 +40,7 @@ export const fetchAchievements = (account: string) => async (dispatch: Dispatch)
   } catch (error) {
     console.error(error)
     const title = 'Error fetching achievements'
-    dispatch(push({ id: kebabCase(title), type: toastTypes.DANGER, title }))
+    dispatch<any>(push({ id: kebabCase(title), type: toastTypes.DANGER, title }))
   }
 }
 

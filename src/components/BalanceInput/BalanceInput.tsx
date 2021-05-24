@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Box, BoxProps, Flex, Input as UIKitInput, Text } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
+import { Button, Box, BoxProps, Flex, Input as UIKitInput, Text } from 'toolkitUI'
 
 export interface BalanceInputProps extends BoxProps {
   title: string
@@ -40,7 +40,7 @@ const BalanceInput: React.FC<BalanceInputProps> = ({ title, max, symbol, onChang
     <StyledBalanceInput {...props}>
       <Flex alignItems="center" justifyContent="space-between" mb="8px">
         <Text fontSize="14px">{title}</Text>
-        <Text fontSize="14px">{TranslateString(999, `Balance: ${maxDisplay}`, { num: maxDisplay })}</Text>
+        <Text fontSize="14px">{TranslateString(999, `Balance: ${maxDisplay}`)}</Text>
       </Flex>
       <Flex alignItems="center">
         <Input onChange={onChange} placeholder="0" value={value} />

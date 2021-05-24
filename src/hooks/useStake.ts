@@ -13,7 +13,7 @@ const useStake = (pid: number) => {
   const handleStake = useCallback(
     async (amount: string) => {
       const txHash = await stake(masterChefContract, pid, amount, account)
-      dispatch(fetchFarmUserDataAsync(account))
+      dispatch<any>(fetchFarmUserDataAsync(account))
       console.info(txHash)
     },
     [account, dispatch, masterChefContract, pid],
@@ -37,8 +37,8 @@ export const useSousStake = (sousId, isUsingBnb = false) => {
       } else {
         await sousStake(sousChefContract, amount, decimals, account)
       }
-      dispatch(updateUserStakedBalance(sousId, account))
-      dispatch(updateUserBalance(sousId, account))
+      dispatch<any>(updateUserStakedBalance(sousId, account))
+      dispatch<any>(updateUserBalance(sousId, account))
     },
     [account, dispatch, isUsingBnb, masterChefContract, sousChefContract, sousId],
   )

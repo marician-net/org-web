@@ -1,4 +1,34 @@
 export default {
+  
+  /** 
+   * Zap Contracts
+   */
+
+  registry: {
+    1: '0xC7Ab7FFc4FC2f3C75FfB621f574d4b9c861330f0',
+    42: '0x26BC483E8f4E868B031b29973232c188B941a3D8',
+    31337: '0xa513E6E4b8f2a923D98304ec87F64353C4D5C853',
+  },
+  bondage: {
+    1: '0x188f79B0a8EdC10aD53285c47c3fEAa0D2716e83',
+    42: '0x6164d3A0644324155cd2ad5CDDe5e01c073b79f1',
+    31337: '0x8a791620dd6260079bf849dc5567adc3f2fdc318',
+  },
+  currentCost: {
+    1: '0xdE775430f4e9F0DF7887d6c7C3ce63b257300fCA',
+    42: '0x80d8e38D1b496EcB9c7afCBd194d34275736eC72',
+    31337: '0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9',
+  },
+  tokenFactory: {
+    1: '0xe13fef4c8e75c12f9706e8bdf28fe847ce99cb42',
+    42: '0xeC97E4896cF9f067a9dD428760316024EA0cfc12',
+    31337: '0x36c02da8a0983159322a80ffe9f24b1acff8b570',
+  },
+
+  /** 
+   * Pancakeswap Contracts
+   */
+
   masterChef: {
     97: '0x1d32c2945C8FDCBc7156c553B7cEa4325a17f4f9',
     56: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',

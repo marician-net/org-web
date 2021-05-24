@@ -1,23 +1,33 @@
 {
   "compilerOptions": {
+    "types": ["react-spring", "jest"],
     "baseUrl": "src",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
     "module": "esnext",
+    "strict": true,
+    "alwaysStrict": true,
+    "strictNullChecks": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
     "jsx": "react-jsx",
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "noFallthroughCasesInSwitch": true
+    "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true,
   },
-  "include": ["src", "scripts"]
+  "include": ["src", "scripts"],
+  "exclude": ["node_modules", "dist", "**/*.stories.tsx"],
+  "paths": {
+    "rebass/styled-components": ["node_modules/rebass/styled-components"],
+    "@reach/portal": ["node_modules/@reach/portal/dist/declarations/src/index.d.ts"]
+  }
 }

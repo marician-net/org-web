@@ -2,12 +2,12 @@ import { useEffect, useMemo } from 'react'
 import BigNumber from 'bignumber.js'
 import { kebabCase } from 'lodash'
 import { useWeb3React } from '@web3-react/core'
-import { Toast, toastTypes } from '@pancakeswap-libs/uikit'
 import { useSelector } from 'react-redux'
-import { useAppDispatch } from 'state'
+import { useAppDispatch } from 'state/index'
 import { Team } from 'config/constants/types'
 import { getWeb3NoAccount } from 'utils/web3'
 import useRefresh from 'hooks/useRefresh'
+import { Toast, toastTypes } from 'toolkitUI'
 import {
   fetchFarmsPublicDataAsync,
   fetchPoolsPublicDataAsync,
@@ -17,7 +17,7 @@ import {
   clear as clearToast,
   setBlock,
 } from './actions'
-import { State, Farm, Pool, ProfileState, TeamsState, AchievementState, PriceState } from './types'
+import { State, Farm, Transaction, Pool, ProfileState, TeamsState, AchievementState, PriceState } from './types'
 import { fetchProfile } from './profile'
 import { fetchTeam, fetchTeams } from './teams'
 import { fetchAchievements } from './achievements'
@@ -26,10 +26,10 @@ import { fetchPrices } from './prices'
 export const useFetchPublicData = () => {
   const dispatch = useAppDispatch()
   const { slowRefresh } = useRefresh()
-  useEffect(() => {
-    dispatch(fetchFarmsPublicDataAsync())
-    dispatch(fetchPoolsPublicDataAsync())
-  }, [dispatch, slowRefresh])
+  // useEffect(() => {
+  //   dispatch<any>(fetchFarmsPublicDataAsync())
+  //   dispatch<any>(fetchPoolsPublicDataAsync())
+  // }, [dispatch, slowRefresh])
 
   useEffect(() => {
     const web3 = getWeb3NoAccount()
@@ -45,8 +45,17 @@ export const useFetchPublicData = () => {
 // Farms
 
 export const useFarms = (): Farm[] => {
+  const test = useSelector((state: State) => state)
+  // eslint-disable-next-line no-console
   const farms = useSelector((state: State) => state.farms.data)
   return farms
+}
+
+export const useTransactions = (): Transaction[] => {
+  const test = useSelector((state: State) => state)
+  // eslint-disable-next-line no-console
+  const transactions = useSelector((state: State) => state.transactions.data)
+  return transactions
 }
 
 export const useFarmFromPid = (pid): Farm => {
@@ -75,11 +84,11 @@ export const useFarmUser = (pid) => {
 export const usePools = (account): Pool[] => {
   const { fastRefresh } = useRefresh()
   const dispatch = useAppDispatch()
-  useEffect(() => {
-    if (account) {
-      dispatch(fetchPoolsUserDataAsync(account))
-    }
-  }, [account, dispatch, fastRefresh])
+  // useEffect(() => {
+  //   if (account) {
+  //     dispatch<any>(fetchPoolsUserDataAsync(account))
+  //   }
+  // }, [account, dispatch, fastRefresh])
 
   const pools = useSelector((state: State) => state.pools.data)
   return pools
@@ -124,9 +133,9 @@ export const useFetchProfile = () => {
   const { account } = useWeb3React()
   const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    dispatch(fetchProfile(account))
-  }, [account, dispatch])
+  // useEffect(() => {
+  //   dispatch<any>(fetchProfile(account))
+  // }, [account, dispatch])
 }
 
 export const useProfile = () => {
@@ -140,9 +149,9 @@ export const useTeam = (id: number) => {
   const team: Team = useSelector((state: State) => state.teams.data[id])
   const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    dispatch(fetchTeam(id))
-  }, [id, dispatch])
+  // useEffect(() => {
+  //   dispatch<any>(fetchTeam(id))
+  // }, [id, dispatch])
 
   return team
 }
@@ -151,9 +160,9 @@ export const useTeams = () => {
   const { isInitialized, isLoading, data }: TeamsState = useSelector((state: State) => state.teams)
   const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    dispatch(fetchTeams())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch<any>(fetchTeams())
+  // }, [dispatch])
 
   return { teams: data, isInitialized, isLoading }
 }
@@ -164,11 +173,11 @@ export const useFetchAchievements = () => {
   const { account } = useWeb3React()
   const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    if (account) {
-      dispatch(fetchAchievements(account))
-    }
-  }, [account, dispatch])
+  // useEffect(() => {
+  //   if (account) {
+  //     dispatch<any>(fetchAchievements(account))
+  //   }
+  // }, [account, dispatch])
 }
 
 export const useAchievements = () => {
@@ -181,9 +190,9 @@ export const useFetchPriceList = () => {
   const { slowRefresh } = useRefresh()
   const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    dispatch(fetchPrices())
-  }, [dispatch, slowRefresh])
+  // useEffect(() => {
+  //   dispatch(fetchPrices())
+  // }, [dispatch, slowRefresh])
 }
 
 export const useGetApiPrices = () => {

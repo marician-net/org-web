@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
-import { Card, CardBody, Heading, Text } from '@pancakeswap-libs/uikit'
+import { Card, CardBody, Heading, Text } from 'toolkitUI'
 import { useWeb3React } from '@web3-react/core'
 import useI18n from 'hooks/useI18n'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
@@ -76,7 +76,7 @@ const Mint: React.FC = () => {
             {TranslateString(794, 'Choose wisely: you can only ever make one starter collectible!')}
           </Text>
           <Text as="p" mb="24px" color="textSubtle">
-            {TranslateString(999, `Cost: ${MINT_COST} CAKE`, { num: MINT_COST })}
+            {TranslateString(999, `Cost: ${MINT_COST} CAKE`)}
           </Text>
           {nfts.map((nft) => {
             const handleChange = (value: string) => setBunnyId(parseInt(value, 10))
